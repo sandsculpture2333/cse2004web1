@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Column Layout</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 10px;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      align-items: center;
+    }
+
+    header {
+      display: flex;
+      align-items:center;
+      justify-content: space-between;
+    }
+
+    body {
+      background: #f6f8f9;
+    }
+
+    span {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2f4f4f;
+      letter-spacing: 0.3px;
+      line-height: 1;
+    }
+
+
+    nav {
+    display: flex;
+    gap: 0.75rem;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    nav a:link {
+      color: rgb(53, 122, 134);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      margin: 0 0px;
+    }
+
+    nav a:hover {
+      color: rgb(76, 170, 146);
+      background-color: rgba(13, 155, 110, 0.2);
+      border-radius: 5px;
+    }
+
+    main {
+      display: flex;
+      gap: 1rem;
+    }
+
+    section {
+      flex-grow: 1;
+    }
+
+    aside {
+      font-size: 0.8rem;
+      max-width: 230px; 
+      overflow: scroll;
+    }
+
+    footer {
+      display:flex;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 420px) {
+      main {
+        flex-direction: column;
+      }
+    }
+    
+    </style>
+<header>
+
+  <span>Site Title</span>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h1>Left Column</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+
+  <aside>
+    <h1>Right Column</h1>
+    <p>Sale suscipit suavitate at eos, eos id posse comprehensam. Prompta ceteros eum eu, ipsum liber eu eam, novum interpretaris eum in. Vim sumo meis utroque an, id eos viderer prompta temporibus, eos in luptatum explicari. Eu cetero tamquam ius. No vim summo eruditi, ei qui quando iriure.</p>
+  </aside>
+</main>
+
+<footer>
+  <p>Footer content...</p>
+</footer>
