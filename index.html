@@ -28,10 +28,13 @@
       margin: 0;                 
     }
 
-    header, main, footer {
-      max-width: 1100px;
-      width: 100%;
+    .container {
+      max-width: 1300px;
       margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 36px); 
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -88,12 +91,23 @@
       color: #6f4e37;                   
     }
 
-
     main {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 320px;
       gap: 16px;
-      align-items: flex-start;
-      flex: 1;
+      align-items: start;
+      margin-top: 16px;
+    }
+
+    /* When quick facts is collapsed */
+    #mainGrid.is-collapsed {
+      grid-template-columns: 1fr;
+    }
+
+    /* When collapsed, place aside below section */
+    #mainGrid.is-collapsed aside {
+      order: 2;
+      width: 100%;
       margin-top: 16px;
     }
 
@@ -110,21 +124,25 @@
       border: 1px solid rgba(111, 78, 55, 0.08);
       flex: 1; 
       padding: 40px 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      min-width: 0;
     }
 
     aside {
-      max-width: 280px;
+      width: 320px;
+      flex: 0 0 320px;
       background: #f3ece6;  
       border: 1px solid rgba(111, 78, 55, 0.12);
+    }
+
+    .extra-section {
+      margin-top: 16px;
     }
 
     .card {
       background: #fbf9f7;
       border: 1px solid rgba(111, 78, 55, 0.08);
       border-radius: 18px;
-      padding: 24px;
+      padding: 20px;
       margin-bottom: 20px;
       transition: 
         background 0.3s ease,
@@ -140,7 +158,7 @@
     }
 
     .card h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 900;
       position: relative;
       padding-bottom: 10px;
@@ -160,21 +178,114 @@
       transition: color 0.3s ease;
       text-shadow: 1px 1px 5px rgba(31, 41, 55, 0.2);
     }
-    
 
-
-    footer {
-      margin-top: 16px;
-      padding: 14px 16px;
+    .footer-card {
+      margin-top: auto;
+      padding: 16px 20px;
       text-align: center;
       color: rgba(31, 41, 55, 0.65);
-      background: rgba(255,255,255,0.65);
+      background: #ffffff; 
       border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 14px;
+    }
+
+    .footer-card:hover {
+      transform: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      background: #ffffff;
+    }
+
+    .quickfacts-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .toggle-btn {
+      background: rgba(111, 78, 55, 0.10);
+      color: #6f4e37;
+      border: 1px solid rgba(111, 78, 55, 0.18);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(111, 78, 55, 0.16);
     }
 
 
-    @media (max-width: 600px) {
+    .facts-body {
+      overflow: hidden;
+      transition: max-height 0.25s ease, opacity 0.25s ease;
+      max-height: 500px;  
+      opacity: 1;
+    }
+
+    .facts-body.is-hidden {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .timing-hero {
+      position: relative;
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .timing-hero-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .timing-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0));
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .timing-overlay {
+      position: absolute;
+      top: 50%;
+      left: 24px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-left: 18px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .timing-hero:hover .timing-overlay {
+      opacity: 1;
+    }
+
+    .note {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 10px 18px;       
+      border-radius: 999px;
+      font-size: 1rem;           
+      color: #6f4e37;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .timing-summary {
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
       header {
         flex-direction: column;
         align-items: stretch;
@@ -196,6 +307,43 @@
         align-self: center;
         margin-bottom: 20px;
       }
+
+      .timing-overlay {
+        position: static;
+        margin-top: 12px;
+      }
+
+      .timing-hero::after {
+        display: none;
+      }
+
+    }
+
+    @media (max-width: 900px) {
+
+      main { grid-template-columns: 1fr; 
+      }
+    
+      aside {
+        width: 100%;
+        flex: 1;
+      }
+
+        .timing-overlay {
+          position: static;       
+          transform: none;
+          opacity: 1;             
+          margin-top: 16px;
+        }
+
+        .timing-hero::after {
+          display: none;         
+        }
+
+        .note {
+          width: 100%;          
+        }
+
     }
 
     /* Header Styling */
@@ -245,6 +393,7 @@
 
 </head>
 <body>
+  <div class="container">
   <header>
   <div class="brand">
     <span class="site-title">Caffeine Mode</span>
@@ -259,24 +408,53 @@
 </header>
 
 
-  <main>
+  <main id="mainGrid">
     <section class="card">
       <h1 id="science">What Caffeine Actually Does</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>Sale suscipit suavitate at eos, eos id posse comprehensam. Prompta ceteros eum eu, ipsum liber eu eam, novum interpretaris eum in. Vim sumo meis utroque an, id eos viderer prompta temporibus, eos in luptatum explicari. Eu cetero tamquam ius. No vim summo eruditi, ei qui quando iriure.</p>
     </section>
 
-    <aside class="card">
-      <h2>Quick facts</h2>
-      <ul>
-        <li>Peak effect: 30–60 minutes</li>
-        <li>Half-life: ~5–7 hours</li>
-        <li>Average coffee: 80–100 mg</li>
-        <li>Recommended daily limit: 400 mg</li>
-      </ul>
+    <aside class="card quickfacts" aria-label="Quick facts">
+      <div class="quickfacts-header">
+        <h2>Quick facts</h2>
+        <button class="toggle-btn" id="factsToggle" aria-expanded="true" aria-controls="factsBody">
+          Hide
+        </button>
+      </div>
 
+      <div id="factsBody" class="facts-body">
+        <ul>
+          <li>Peak effect: 30–60 minutes</li>
+          <li>Half-life: ~5–7 hours</li>
+          <li>Average coffee: 80–100 mg</li>
+          <li>Recommended daily limit: 400 mg</li>
+        </ul>
+      </div>
     </aside>
+
+
+    
   </main>
+    <section class="card timing-card" id="timing">
+      <h1>Timing and Half-Life</h1>
+
+      <div class="timing-hero">
+        <img src="drinks.jpg" alt="Coffee on a table" class="timing-hero-img">
+
+        <div class="timing-overlay">
+          <div class="note">→ <strong>0–30 min</strong> Absorption begins</div>
+          <div class="note">→ <strong>30–60 min</strong> Peak alertness</div>
+          <div class="note">→ <strong>5–7 hours</strong> Half-life</div>
+          <div class="note">→ <strong>Crash</strong> Adenosine rebound</div>
+        </div>
+      </div>
+
+      <p class="timing-summary">
+        Write 2–3 sentences here about why timing matters (peak + half-life + sleep impact).
+      </p>
+    </section>
+
 
   <section class="card">
       <h1>Another Section</h1>
@@ -286,7 +464,30 @@
 
 
 
-  <footer>
+    <section class="card extra-section">
+      ...
+    </section>
+
+
+  <footer class="card footer-card">
     <p>Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. </p>
   </footer>
+  </div>
 </body>
+
+  <script>
+    const toggleBtn = document.getElementById("factsToggle");
+    const factsBody = document.getElementById("factsBody");
+    const mainGrid = document.getElementById("mainGrid");
+
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = factsBody.classList.toggle("is-hidden");
+
+      toggleBtn.textContent = isHidden ? "Show" : "Hide";
+      toggleBtn.setAttribute("aria-expanded", String(!isHidden));
+
+      mainGrid.classList.toggle("is-collapsed", isHidden);
+    });
+  </script>
+
+</html>
