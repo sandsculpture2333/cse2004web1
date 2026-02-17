@@ -50,6 +50,7 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+
     }
 
     .site-title {
@@ -119,28 +120,48 @@
       border: 1px solid rgba(111, 78, 55, 0.12);
     }
 
-    h1 {
+    .card {
+      background: #fbf9f7;
+      border: 1px solid rgba(111, 78, 55, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: 
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .card:hover {
+      background: #f3ece6;   /* slightly warmer */
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .card h1 {
+      font-size: 3rem;
+      font-weight: 900;
       position: relative;
       padding-bottom: 10px;
+      margin-bottom: 10px;
+      color: #614531;
     }
 
-    h1::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: #6f4e37;  
-      border-radius: 2px;
-      margin-bottom: 4px;
-    }
-
-    h2 {
+    .card h2 {
       font-size: 1.1rem;
       margin-bottom: 10px;
       color: rgba(31, 41, 55, 0.85);
     }
+
+    .card:hover h1,
+    .card:hover h2 {
+      color: #765035f0; 
+      transition: color 0.3s ease;
+      text-shadow: 1px 1px 5px rgba(31, 41, 55, 0.2);
+    }
+    
+
 
     footer {
       margin-top: 16px;
@@ -171,6 +192,9 @@
 
       aside {
         max-width: 100%;
+        text-align: center;
+        align-self: center;
+        margin-bottom: 20px;
       }
     }
 
@@ -236,13 +260,13 @@
 
 
   <main>
-    <section>
+    <section class="card">
       <h1 id="science">What Caffeine Actually Does</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>Sale suscipit suavitate at eos, eos id posse comprehensam. Prompta ceteros eum eu, ipsum liber eu eam, novum interpretaris eum in. Vim sumo meis utroque an, id eos viderer prompta temporibus, eos in luptatum explicari. Eu cetero tamquam ius. No vim summo eruditi, ei qui quando iriure.</p>
     </section>
 
-    <aside>
+    <aside class="card">
       <h2>Quick facts</h2>
       <ul>
         <li>Peak effect: 30–60 minutes</li>
@@ -254,7 +278,7 @@
     </aside>
   </main>
 
-  <section>
+  <section class="card">
       <h1>Another Section</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 
