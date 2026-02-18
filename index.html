@@ -60,7 +60,7 @@
       <section class="card timing-card" id="timing">
         <h1>Timing and Half-Life</h1>
         <div class="timing-hero">
-          <img src="drinks.jpg" alt="Coffee on a table" class="timing-hero-img">
+          <img src="drinks.jpg" alt="Coffee drink on a wooden table" class="timing-hero-img">
           <div class="timing-overlay">
             <div class="note">→ <strong>0–30 min</strong> Absorption begins</div>
             <div class="note">→ <strong>30–60 min</strong> Peak alertness</div>
@@ -92,22 +92,24 @@
 
       <section class="card" id="drinks">
         <h1>Common Drinks Compared</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Drink</th>
-              <th>Serving</th>
-              <th>Caffeine (mg)</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Brewed coffee</td><td>8 oz</td><td>80–100</td><td>Varies by roast/brew</td></tr>
-            <tr><td>Green tea</td><td>8 oz</td><td>30-40</td><td>Less caffeine than coffee</td></tr>
-            <tr><td>Black tea</td><td>8 oz</td><td>40–70</td><td>Smoother rise</td></tr>
-            <tr><td>Energy drink</td><td>16 oz</td><td>150–200</td><td>Often + sugar</td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrapper"><
+            <table>
+              <thead>
+                <tr>
+                  <th>Drink</th>
+                  <th>Serving</th>
+                  <th>Caffeine (mg)</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Brewed coffee</td><td>8 oz</td><td>80–100</td><td>Varies by roast/brew</td></tr>
+                <tr><td>Green tea</td><td>8 oz</td><td>30-40</td><td>Less caffeine than coffee</td></tr>
+                <tr><td>Black tea</td><td>8 oz</td><td>40–70</td><td>Smoother rise</td></tr>
+                <tr><td>Energy drink</td><td>16 oz</td><td>150–200</td><td>Often + sugar</td></tr>
+              </tbody>
+            </table>
+        </div>
       </section>
 
       <section class="card" id="calc">
@@ -135,7 +137,7 @@
               <input type="time" id="bedtime">
             </label>
           </div>
-          <button type="submit">Estimate</button>
+          <button type="submit" class="calc-btn">Estimate</button>
         </form>
 
         <p id="result"></p>
